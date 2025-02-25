@@ -27,3 +27,13 @@ spec:
               value: "{{ .Values.container.env.SERVER_PORT }}"
             - name: SERVER_SERVLET_CONTEXT_PATH
               value: "{{ .Values.container.env.SERVER_SERVLET_CONTEXT_PATH }}"
+            - name: REDIS_PASSWORD
+              valueFrom:
+                secretKeyRef: 
+                  name: my-redis
+                  key: redis-password
+          command: ["java"]
+          args:
+            - "-Dspring.redis.password=$(REDIS_PASSWORD)"
+            - "-jar"
+            - "app.jar"
