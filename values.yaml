@@ -3,7 +3,7 @@ replicaCount: 2
 image:
   repository: sse-test
   tag: v1.0.3
-  pullPolicy: IfNotPresent  # Use Never since we are using Minikube's local Docker
+  pullPolicy: IfNotPresent
 
 service:
   type: ClusterIP
